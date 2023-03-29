@@ -1,7 +1,11 @@
 number = 7
-user_input = input("Enter 'y' if you wold like to play: ")
 
-if user_input in ("Y", "y"):
+while True:
+    user_input = input("Would you like to play? (Y/n) ")
+
+    if user_input == "n":
+        break
+
     user_numer = int(input("Guess our number: "))
     if user_numer == number:
         print("You guesses correctly!")
@@ -9,3 +13,4 @@ if user_input in ("Y", "y"):
         print("You were off by one.")
     else:
         print("Sorry, it's wrong!")
+
