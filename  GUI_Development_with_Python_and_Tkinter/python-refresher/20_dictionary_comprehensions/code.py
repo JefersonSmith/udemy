@@ -7,6 +7,8 @@ users = [
 
 username_mapping = {user[1]: user for user in users}
 
+print(username_mapping)
+
 username_input = input("Enter you username: ")
 password_input = input("Enter you password: ")
 
