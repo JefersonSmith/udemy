@@ -1,3 +1,3 @@
-from libs.operations import operator
+from .operations import operator
 
-print("mymodule.py:", __name__)
+print("mylib.py:", __name__)

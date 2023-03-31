@@ -1,3 +1,3 @@
-from libs import mylib
+from .libs import mylib
 
 print("mymodely.py", __name__)

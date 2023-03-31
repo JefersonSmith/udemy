@@ -1,14 +1,28 @@
 def divide(dividend, divisor):
     if divisor == 0:
-        print("Divisor cannot be 0.")
-        return
+        raise ZeroDivisionError("Divisor cannot be 0.")
+
     return dividend / divisor
 
-divide(15,0)
 
-grades = [78, 99, 85, 100]
+
+students = [
+    {"name": "Bob", "grades": [75, 90]},
+    {"name": "Rolf", "grades": []},
+    {"name": "Jen", "grades": [100, 90]}
+]
 
 print("Welcome to the average grade program.")
-average = divide(sum(grades), len(grades))
 
-print(f"The average grade is {average}")
+try:
+    for student in students:
+        name = student["name"]
+        grades = student["grades"]
+        average = divide(sum(grades), len(grades))
+        print(f"{name} averaged {average}.")
+except ZeroDivisionError:
+    print(f"ERROR: {name} has no grades")
+else:
+    print(f"-- All student averages calculated --")
+finally:
+    print("-- End of student average calculation")
