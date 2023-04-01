@@ -1,6 +1,12 @@
 import tkinter as tk
 from tkinter import ttk
 
+try:
+    from ctypes import windll
+    windll.shcore.SetprocessDpiAwareness(1) # Melhora a qualidade da imagem no windows
+except:
+    pass
+
 def greet():
     print(f"Hello, {user_name.get() or 'World'}!")
 
