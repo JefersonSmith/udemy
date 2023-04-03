@@ -26,21 +26,28 @@ root.columnconfigure(0, weight=1) #mantem centralizado quando expandimos a janel
 main = ttk.Frame(root, padding=(30, 15))
 main.grid()
 
+# -- Widgets --
+
 metres_label = ttk.Label(main, text="Metres:")
 metres_input = ttk.Entry(main, width=10, textvariable=metres_value, font=("Segoe UI", 15))
 feet_label = ttk.Label(main, text="Feet:")
 feet_display = ttk.Label(main, textvariable=feet_value)
 calc_button = ttk.Button(main, text="Calculate", command=calculate_feet)#command adiciona o def criado acima
 
-metres_label.grid(column=0, row=0, sticky="w", padx=15, pady=15) #sticky vai alinhar o texto
-metres_input.grid(column=1, row=0, sticky="EW", padx=15, pady=15)
+# -- Layout --
+
+metres_label.grid(column=0, row=0, sticky="w") #sticky vai alinhar o texto
+metres_input.grid(column=1, row=0, sticky="EW")
 metres_input.focus()
 
-feet_label.grid(column=0, row=1, sticky="w", padx=15, pady=15)
-feet_display.grid(column=1, row=1, sticky="EW", padx=15, pady=15)
+feet_label.grid(column=0, row=1, sticky="w")
+feet_display.grid(column=1, row=1, sticky="EW")
 
-calc_button.grid(column=0, row=2, columnspan=2, sticky="EW", padx=5, pady=5) # Estica o botao
+calc_button.grid(column=0, row=2, columnspan=2, sticky="EW") # Estica o botao
 
+# criando um aforma de alterar todos os padx e pady ao meso tempo
+for child in main.winfo_children():
+    child.grid_configure(padx=15, pady=15)
 
 #criando atalhosno teclado
 root.bind("<Return>", calculate_feet) # apertar ENTER (<Return>) faz calcular
