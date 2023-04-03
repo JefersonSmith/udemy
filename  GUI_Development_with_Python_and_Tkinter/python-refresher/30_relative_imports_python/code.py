@@ -1,3 +1,3 @@
 import mymodule
 
-print("code.py", __name__)h
+print("code.py", __name__)
