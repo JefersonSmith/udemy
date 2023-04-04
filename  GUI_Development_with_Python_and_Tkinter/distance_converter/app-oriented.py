@@ -13,23 +13,19 @@ class DistanceConverter(tk.Tk):
         container = ttk.Frame(self)
         container.grid(padx=60, pady=30, sticky="EW")
 
-        feet_to_metres = FeetToMetres(container, self)
-        feet_to_metres.grid(row=0, column=0, sticky="NSEW")
-
-        metres_to_feet = MetresToFeet(container, self)
-        metres_to_feet.grid(row=0, column=0, sticky="NSEW")
-
-        self.frames[FeetToMetres] = feet_to_metres
-        self.frames[MetresToFeet] = metres_to_feet
 
         for FrameClass in (MetresToFeet, FeetToMetres):
             frame = FrameClass(container, self)
             self.frames[FrameClass] = frame
             frame.grid(row=0, column=0, sticky="NSEW")
 
+        self.show_frame(MetresToFeet)
+
 
     def show_frame(self, container):
         frame = self.frames[container]
+        self.bind("<Return>", frame.calculate)
+        self.bind("<KP_Enter>", frame.calculate)
         frame.tkraise()
 
 class MetresToFeet(ttk.Frame):
